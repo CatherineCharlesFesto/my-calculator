@@ -53,7 +53,7 @@ def main():
         choice = input("Choose an operation (1-5): ")
 
         if choice == '5':
-            print("Exiting calculator. Goodbye!")
+            print("Exiting calculator. Goodbye")
             break
 
         calc.get_inputs()
