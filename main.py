@@ -1,73 +1,36 @@
-class Calculator:
-    def __init__(self):
-        self.numbers = []
+from tkinter import *
 
-    def get_inputs(self):
-        self.numbers = []
-        print("Enter numbers one by one. Type 'done' when finished:")
-        while True:
-            user_input = input("Enter a number: ")
-            if user_input.lower() == 'done':
-                break
-            try:
-                number = float(user_input)
-                self.numbers.append(number)
-            except ValueError:
-                print("Invalid input! Please enter a valid number.")
 
-    def calculate_sum(self):
-        return sum(self.numbers)
+window = Tk()
 
-    def calculate_difference(self):
-        if not self.numbers:
-            return 0
-        result = self.numbers[0]
-        for num in self.numbers[1:]:
-            result -= num
-        return result
+window.title("Age Calculator")
+window.geometry("300x200")
 
-    def calculate_product(self):
-        if not self.numbers:
-            return 0
-        product = 1
-        for num in self.numbers:
-            product *= num
-        return product
+# Create labels and entry fields for day, month, and year
+day_label = Label(window, text="Day:")
+day_label.grid(row=0, column=0, padx=5, pady=5)
+day_entry = Entry(window)
+day_entry.grid(row=0, column=1, padx=5, pady=5)
 
-    def calculate_average(self):
-        if not self.numbers:
-            return 0
-        return sum(self.numbers) / len(self.numbers)
+month_label = Label(window, text="Month:")
+month_label.grid(row=1, column=0, padx=5, pady=5)
+month_entry = Entry(window)
+month_entry.grid(row=1, column=1, padx=5, pady=5)
 
-def main():
-    calc = Calculator()
-    
-    while True:
-        print("My calculator")
-        print("1. Sum")
-        print("2. Difference")
-        print("3. Product")
-        print("4. Average")
-        print("5. Exit")
+year_label = Label(window, text="Year:")
+year_label.grid(row=2, column=0, padx=5, pady=5)
+year_entry = Entry(window)
+year_entry.grid(row=2, column=1, padx=5, pady=5)
 
-        choice = input("Choose an operation (1-5): ")
 
-        if choice == '5':
-            print("Exiting calculator. Goodbye")
-            break
+# Create a button to calculate the age
+calculate_button = Button(window, text="Calculate Age",)
+calculate_button.grid(row=3, column=0, columnspan=2, pady=10)
 
-        calc.get_inputs()
+# Label to show result
+result_label = Label(window, text="")
+result_label.grid(row=4, column=0, columnspan=2, pady=5)
 
-        if choice == '1':
-            print("Sum:", calc.calculate_sum())
-        elif choice == '2':
-            print("Difference:", calc.calculate_difference())
-        elif choice == '3':
-            print("Product:", calc.calculate_product())
-        elif choice == '4':
-            print("Average:", calc.calculate_average())
-        else:
-            print("Invalid choice. Please select 1-5.")
+window.mainloop()
 
-# Run the program
-main()
+
